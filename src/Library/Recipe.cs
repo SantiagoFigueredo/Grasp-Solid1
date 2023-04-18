@@ -62,3 +62,7 @@ namespace Full_GRASP_And_SOLID.Library
 
     }
 }
+
+//La respuesta a la pregunta "¿Qué patrón o principio usan para asignar esta responsabilidad?" sería el principio SOLID de Responsabilidad Única (SRP), 
+//ya que se está asignando una única responsabilidad (calcular el costo total de producción) a la clase Recipe, que es la que tiene la información necesaria para realizar este cálculo. 
+//Además, la implementación del cálculo del costo total no afecta la funcionalidad original de la clase Recipe.
