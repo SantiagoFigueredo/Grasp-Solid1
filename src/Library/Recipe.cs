@@ -24,7 +24,7 @@ namespace Full_GRASP_And_SOLID.Library
         {
             this.steps.Remove(step);
         }
-
+/*
         public void PrintRecipe()
         {
             Console.WriteLine($"Receta de {this.FinalProduct.Description}:");
@@ -34,5 +34,31 @@ namespace Full_GRASP_And_SOLID.Library
                     $"usando '{step.Equipment.Description}' durante {step.Time}");
             }
         }
+*/
+        public double GetProductionCost()
+        {
+            double inputCost = 0;
+            double equipmentCost = 0;
+    
+            foreach (Step step in this.steps)
+            {
+                inputCost += step.Quantity * step.Input.UnitCost;
+                equipmentCost += step.Time * step.Equipment.HourlyCost / 60.0; // Convertir minutos a horas
+            }
+    
+            return inputCost + equipmentCost;
+        }
+
+        public void PrintRecipe()
+        {
+            Console.WriteLine($"Receta de {this.FinalProduct.Description}:");
+            foreach (Step step in this.steps)
+            {
+                Console.WriteLine($"{step.Quantity} de '{step.Input.Description}' " +
+                $"usando '{step.Equipment.Description}' durante {step.Time}");
+            }
+                Console.WriteLine($"Costo total de producción: {GetProductionCost()}");
+        }
+
     }
 }
